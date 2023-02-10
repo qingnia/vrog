@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditorInternal;
 
 public class CommonFun : MonoBehaviour
 {
@@ -64,5 +65,35 @@ public class CommonFun : MonoBehaviour
         {
             Debug.LogFormat("key: {0}  value:{1}", key, map[key]);
         }
+    }
+
+    public static Vector3 getFrontPos(string dir, Vector3 pos)
+    {
+        Vector3 ret = new Vector3();
+        switch (dir)
+        {
+            case "foward":
+                ret.x = pos.x - 20;
+                ret.y = pos.y;
+                ret.z = pos.z;
+                break;
+            case "left":
+                ret.x = pos.x;
+                ret.y = pos.y;
+                ret.z = pos.z + 20;
+                break;
+            case "right":
+                ret.x = pos.x + 20;
+                ret.y = pos.y;
+                ret.z = pos.z;
+                break;
+            case "behind":
+                ret.x = pos.x;
+                ret.y = pos.y;
+                ret.z = pos.z - 20;
+                break;
+            default: return ret;
+        }
+        return ret;
     }
 }

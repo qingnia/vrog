@@ -24,3 +24,17 @@ public enum examType
     etDice, etItem, //可以使用物品
     etNone,
 };
+public enum DOOR_STATUS
+{
+    Close,
+    Uncheck,
+    Checked
+}
+
+public enum ROOM_TYPE
+{
+    READY,
+    FIGHT,
+    REST,
+    ROUTE
+}

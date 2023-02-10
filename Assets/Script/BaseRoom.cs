@@ -2,31 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build;
 using UnityEngine;
-
-public enum DOOR_STATUS
-{
-    Open,
-    Close
-}
-
-public enum ROOM_TYPE
-{
-    SINGLE_DOOR,
-    STRAIGHT,
-    TURN,
-    THREE_DOOR,
-    FOUR_DOOR
-}
+using UnityEngine.PlayerLoop;
 
 public class BaseRoom : MonoBehaviour
 {
-    public Vector3 pos;
     public float rotationY;
-    public Dictionary<string, Wall> walls;
-    public Wall forward, left, right, behind;
-    public ROOM_TYPE roomType;
+    public Dictionary<string, Wall> walls = new Dictionary<string, Wall>();
+    public string roomType;
     public GameObject player;
     public GameManager gm;
+    private bool enterd = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,47 +21,26 @@ public class BaseRoom : MonoBehaviour
         gm = go.GetComponent<GameManager>();
     }
 
-    public void Init(Dictionary<string, string> cfg)
+    public void Init(Dictionary<string, int> wallInfo)
     {
+        var wallObj = Resources.Load("wall");
         Debug.Log("init room");
-        CommonFun.PrintMap(cfg);
-        //roomType = _roomType;
-        //Debug.LogFormat("init room type", roomType.ToString());
-        //switch (roomType)
-        //{sing
-        //    case ROOM_TYPE.SINGLE_DOOR:
-        //        forward.HideWall(false);
-        //        left.HideWall(false);
-        //        right.HideWall(false);
-        //        behind.HideWall(true);
-        //        break;
-        //    case ROOM_TYPE.STRAIGHT:
-        //        forward.HideWall(true);
-        //        left.HideWall(false);
-        //        right.HideWall(false);
-        //        behind.HideWall(true);
-        //        break;
-        //    case ROOM_TYPE.TURN:
-        //        forward.HideWall(false);
-        //        left.HideWall(false);
-        //        right.HideWall(true);
-        //        behind.HideWall(true);
-        //        break;
-        //    case ROOM_TYPE.THREE_DOOR:
-        //        forward.HideWall(false);
-        //        left.HideWall(true);
-        //        right.HideWall(true);
-        //        behind.HideWall(true);
-        //        break;
-        //    case ROOM_TYPE.FOUR_DOOR:
-        //        forward.HideWall(true);
-        //        left.HideWall(true);
-        //        right.HideWall(true);
-        //        behind.HideWall(true);
-        //        break;
-        //    default:
-        //        break;
-        //}
+        foreach (string key in wallInfo.Keys)
+        {
+            Debug.LogFormat("key: {0}  value:{1}", key, wallInfo[key]);
+            GameObject go = Instantiate(wallObj) as GameObject;
+            go.transform.SetParent(this.gameObject.transform, false);
+            var wall = go.GetComponent<Wall>();
+            if (wallInfo[key] == 1)
+            {
+                wall.modifyStatus(DOOR_STATUS.Uncheck);
+            }
+            else
+            {
+                wall.modifyStatus(DOOR_STATUS.Close);
+            }
+            walls.Add(key, go.GetComponent<Wall>());
+        }
     }
 
     private void Update()
@@ -94,7 +58,22 @@ public class BaseRoom : MonoBehaviour
         Debug.Log("enter room, base room");
         if (collision.transform == player.transform)
         {
-
+            if (!enterd)
+            {
+                //首次进入房间，把每个门外的屋子也生成好
+                foreach (string key in walls.Keys)
+                {
+                    var wall = walls[key];
+                    if (walls[key].status == DOOR_STATUS.Uncheck)
+                    {
+                        Vector3 pos = CommonFun.getFrontPos(key, transform.position);
+                        //随机生成墙或门，避免旋转
+                        gm.CreateRoom(ROOM_TYPE.FIGHT, pos);
+                        walls[key].modifyStatus(DOOR_STATUS.Checked);
+                    }
+                }
+                enterd = true;
+            }
         }
     }
 

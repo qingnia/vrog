@@ -5,6 +5,7 @@ using UnityEngine.TextCore.Text;
 
 public class GameManager : MonoBehaviour
 {
+    string[] wallKeys = new string[4];
     public GameObject player;
     public Config config;
     public int initRoomId;
@@ -13,6 +14,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        wallKeys[0] = "forward";
+        wallKeys[1] = "left";
+        wallKeys[2] = "right";
+        wallKeys[3] = "behind";
         roomObj = Resources.Load("Room");
     }
 
@@ -21,18 +26,22 @@ public class GameManager : MonoBehaviour
     {
         if (!init)
         {
-            CreateRoom(1, Vector3.zero, 0);
+            CreateRoom(ROOM_TYPE.READY, Vector3.zero);
             init = true;
         }
     }
 
-    public void CreateRoom(int roomId, Vector3 pos, float yaw)
+    public void CreateRoom(ROOM_TYPE rt, Vector3 pos)
     {
-        Debug.LogFormat("create room, roomId:{0}", roomId.ToString());
-        Quaternion rotation = Quaternion.Euler(0, yaw, 0);
-        GameObject go = Instantiate(roomObj, pos, rotation) as GameObject;
-        var cfg = config.GetRoomConfig(roomId);
-        go.GetComponent<BaseRoom>().Init(cfg);
+        Debug.LogFormat("create room, roomId:{0}", rt.ToString());
+        GameObject go = Instantiate(roomObj, pos, Quaternion.identity) as GameObject;
+        Dictionary<string, int> wallInfo = new Dictionary<string, int>();
+        foreach(string key in wallKeys)
+        {
+            wallInfo[key] = Random.Range(0, 1);
+        }
+        //var cfg = config.GetRoomConfig(roomId);
+        go.GetComponent<BaseRoom>().Init(wallInfo);
     }
 
     public void EnterRoom(GameObject go)

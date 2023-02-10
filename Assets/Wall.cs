@@ -6,23 +6,31 @@ public class Wall : MonoBehaviour
 {
     public GameObject wall;
     public GameObject trigger;
+    public DOOR_STATUS status
+    { get; private set; }
+    
     // Start is called before the first frame update
     void Start()
     {
        
     }
 
-    public void HideWall(bool hide)
+    public void modifyStatus(DOOR_STATUS _status)
     {
-        if (hide)
+        status = _status;
+        switch(status)
         {
-            wall.SetActive(false);
-            trigger.SetActive(true);
-        }
-        else
-        {
-            wall.SetActive(true);
-            trigger.SetActive(false);
+            case DOOR_STATUS.Close:
+                wall.SetActive(true);
+                break;
+            case DOOR_STATUS.Uncheck:
+                wall.SetActive(false);
+                break;
+            case DOOR_STATUS.Checked:
+                wall.SetActive(false);
+                break;
+            default: break;
         }
     }
+
 }
