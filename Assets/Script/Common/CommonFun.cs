@@ -72,7 +72,7 @@ public class CommonFun : MonoBehaviour
         Vector3 ret = new Vector3();
         switch (dir)
         {
-            case "foward":
+            case "forward":
                 ret.x = pos.x - 20;
                 ret.y = pos.y;
                 ret.z = pos.z;
@@ -80,17 +80,17 @@ public class CommonFun : MonoBehaviour
             case "left":
                 ret.x = pos.x;
                 ret.y = pos.y;
-                ret.z = pos.z + 20;
+                ret.z = pos.z - 20;
                 break;
             case "right":
+                ret.x = pos.x;
+                ret.y = pos.y;
+                ret.z = pos.z + 20;
+                break;
+            case "behind":
                 ret.x = pos.x + 20;
                 ret.y = pos.y;
                 ret.z = pos.z;
-                break;
-            case "behind":
-                ret.x = pos.x;
-                ret.y = pos.y;
-                ret.z = pos.z - 20;
                 break;
             default: return ret;
         }

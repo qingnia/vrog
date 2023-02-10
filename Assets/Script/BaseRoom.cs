@@ -27,7 +27,7 @@ public class BaseRoom : MonoBehaviour
         Debug.Log("init room");
         foreach (string key in wallInfo.Keys)
         {
-            Debug.LogFormat("key: {0}  value:{1}", key, wallInfo[key]);
+            Debug.LogFormat("init wall key: {0}  value:{1}", key, wallInfo[key]);
             GameObject go = Instantiate(wallObj) as GameObject;
             go.transform.SetParent(this.gameObject.transform, false);
             var wall = go.GetComponent<Wall>();
@@ -64,9 +64,11 @@ public class BaseRoom : MonoBehaviour
                 foreach (string key in walls.Keys)
                 {
                     var wall = walls[key];
-                    if (walls[key].status == DOOR_STATUS.Uncheck)
+                    Debug.LogFormat("check door, key: {0}, status: {1}", key, wall.status.ToString());
+                    if (wall.status == DOOR_STATUS.Uncheck)
                     {
                         Vector3 pos = CommonFun.getFrontPos(key, transform.position);
+                        Debug.LogFormat("enter room, create new room, key: {0}, status: {1}, pos:{2}", key, wall.status.ToString(), pos.ToString());
                         //随机生成墙或门，避免旋转
                         gm.CreateRoom(ROOM_TYPE.FIGHT, pos);
                         walls[key].modifyStatus(DOOR_STATUS.Checked);

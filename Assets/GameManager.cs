@@ -33,12 +33,20 @@ public class GameManager : MonoBehaviour
 
     public void CreateRoom(ROOM_TYPE rt, Vector3 pos)
     {
-        Debug.LogFormat("create room, roomId:{0}", rt.ToString());
+        Debug.LogFormat("create room, room type:{0}", rt.ToString());
         GameObject go = Instantiate(roomObj, pos, Quaternion.identity) as GameObject;
+        go.transform.SetParent(this.transform, false);
         Dictionary<string, int> wallInfo = new Dictionary<string, int>();
         foreach(string key in wallKeys)
         {
-            wallInfo[key] = Random.Range(0, 1);
+            if (rt == ROOM_TYPE.READY)
+            {
+                wallInfo[key] = 1;
+            }
+            else
+            {
+                wallInfo[key] = Random.Range(0, 1);
+            }
         }
         //var cfg = config.GetRoomConfig(roomId);
         go.GetComponent<BaseRoom>().Init(wallInfo);
