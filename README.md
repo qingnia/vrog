@@ -1,4 +1,17 @@
 # vrog
+## 代码规范
+### 编码格式UTF-8
+```sh
+# VS调出保存格式的操作步骤：
+https://blog.csdn.net/NSJim/article/details/123253659
+
+# VS安装插件，强制保存为UTF-8
+拓展——>联机——>force UTF-8（No BOM)
+
+unity默认的编码格式是GBK，要在安装目录下找到代码的模板，改掉，路径如下：
+C:\Program Files\Unity\Hub\Editor\2022.2.5f1\Editor\Data\Resources\ScriptTemplates
+把模板重新以UTF-8保存后，新生成的脚本就都是UTF-8了
+```
 
 #### 介绍
 {**以下是 Gitee 平台说明，您可以替换此简介**

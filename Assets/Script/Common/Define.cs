@@ -1,4 +1,4 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +21,7 @@ public enum examType
 {
     etSpeed, etStrength, etSpirit, etKnowledge,
     etPhysicalDamage, etMindDamage,
-    etDice, etItem, //可以使用物品
+    etDice, etItem, //鍙互浣跨敤鐗╁搧
     etNone,
 };
 public enum DOOR_STATUS

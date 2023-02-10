@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -50,7 +50,7 @@ public class Config : MonoBehaviour
     {
         Dictionary<int, Dictionary<string, string>> csvInfo = new Dictionary<int, Dictionary<string, string>>();
 
-        //¶ÁÈ¡Ã¿Ò»ĞĞµÄÄÚÈİ  
+        //è¯»å–æ¯ä¸€è¡Œçš„å†…å®¹  
         string[] lineArray = ta.text.Split('\n');
         for (int i = 0; i < lineArray.Length; i++)
         {
@@ -61,18 +61,18 @@ public class Config : MonoBehaviour
             //lineArray[i] = lineArray[i].Substring(0, lineArray[i].Length - 1);
         }
 
-        //¼ÇÂ¼Ã¿ĞĞ¼ÇÂ¼ÖĞµÄ¸÷×Ö¶ÎÄÚÈİ
+        //è®°å½•æ¯è¡Œè®°å½•ä¸­çš„å„å­—æ®µå†…å®¹
         string[] aryLine = null;
 
-        //Ê×ĞĞºöÂÔ
+        //é¦–è¡Œå¿½ç•¥
 
-        //µÚ¶şĞĞÊÇ×Ö¶ÎÃû
+        //ç¬¬äºŒè¡Œæ˜¯å­—æ®µå
         string[] columnName = lineArray[1].Split('\t');
-        //±êÊ¾ÁĞÊı
+        //æ ‡ç¤ºåˆ—æ•°
         int columnCount = columnName.Length;
 
         int id = 0;
-        //ÖğĞĞ¶ÁÈ¡CSVÖĞµÄÊı¾İ
+        //é€è¡Œè¯»å–CSVä¸­çš„æ•°æ®
         for (int i = 2; i < lineArray.Length - 2; i++)
         {
             //strLine = Common.ConvertStringUTF8(strLine, encoding);

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build;
 using UnityEngine;
@@ -55,7 +55,7 @@ public class BaseRoom : MonoBehaviour
         {
             if (!enterd)
             {
-                //Ê×´Î½øÈë·¿¼ä£¬°ÑÃ¿¸öÃÅÍâµÄÎİ×ÓÒ²Éú³ÉºÃ
+                //é¦–æ¬¡è¿›å…¥æˆ¿é—´ï¼ŒæŠŠæ¯ä¸ªé—¨å¤–çš„å±‹å­ä¹Ÿç”Ÿæˆå¥½
                 foreach (string key in walls.Keys)
                 {
                     var wall = walls[key];
@@ -64,7 +64,7 @@ public class BaseRoom : MonoBehaviour
                     {
                         Vector3 pos = CommonFun.getFrontPos(key, transform.position);
                         Debug.LogFormat("enter room, create new room, key: {0}, status: {1}, pos:{2}", key, wall.status.ToString(), pos.ToString());
-                        //Ëæ»úÉú³ÉÇ½»òÃÅ£¬±ÜÃâĞı×ª
+                        //éšæœºç”Ÿæˆå¢™æˆ–é—¨ï¼Œé¿å…æ—‹è½¬
                         gm.CreateRoom(ROOM_TYPE.FIGHT, pos, key);
                         walls[key].modifyStatus(DOOR_STATUS.Checked);
                     }
