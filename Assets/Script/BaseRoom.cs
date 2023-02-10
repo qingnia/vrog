@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 public enum DOOR_STATUS
@@ -21,6 +22,7 @@ public class BaseRoom : MonoBehaviour
 {
     public Vector3 pos;
     public float rotationY;
+    public Dictionary<string, Wall> walls;
     public Wall forward, left, right, behind;
     public ROOM_TYPE roomType;
     public GameObject player;
@@ -34,45 +36,47 @@ public class BaseRoom : MonoBehaviour
         gm = go.GetComponent<GameManager>();
     }
 
-    public void Init(ROOM_TYPE _roomType)
+    public void Init(Dictionary<string, string> cfg)
     {
-        roomType = _roomType;
-        Debug.LogFormat("init room type", roomType.ToString());
-        switch (roomType)
-        {
-            case ROOM_TYPE.SINGLE_DOOR:
-                forward.HideWall(false);
-                left.HideWall(false);
-                right.HideWall(false);
-                behind.HideWall(true);
-                break;
-            case ROOM_TYPE.STRAIGHT:
-                forward.HideWall(true);
-                left.HideWall(false);
-                right.HideWall(false);
-                behind.HideWall(true);
-                break;
-            case ROOM_TYPE.TURN:
-                forward.HideWall(false);
-                left.HideWall(false);
-                right.HideWall(true);
-                behind.HideWall(true);
-                break;
-            case ROOM_TYPE.THREE_DOOR:
-                forward.HideWall(false);
-                left.HideWall(true);
-                right.HideWall(true);
-                behind.HideWall(true);
-                break;
-            case ROOM_TYPE.FOUR_DOOR:
-                forward.HideWall(true);
-                left.HideWall(true);
-                right.HideWall(true);
-                behind.HideWall(true);
-                break;
-            default:
-                break;
-        }
+        Debug.Log("init room");
+        CommonFun.PrintMap(cfg);
+        //roomType = _roomType;
+        //Debug.LogFormat("init room type", roomType.ToString());
+        //switch (roomType)
+        //{sing
+        //    case ROOM_TYPE.SINGLE_DOOR:
+        //        forward.HideWall(false);
+        //        left.HideWall(false);
+        //        right.HideWall(false);
+        //        behind.HideWall(true);
+        //        break;
+        //    case ROOM_TYPE.STRAIGHT:
+        //        forward.HideWall(true);
+        //        left.HideWall(false);
+        //        right.HideWall(false);
+        //        behind.HideWall(true);
+        //        break;
+        //    case ROOM_TYPE.TURN:
+        //        forward.HideWall(false);
+        //        left.HideWall(false);
+        //        right.HideWall(true);
+        //        behind.HideWall(true);
+        //        break;
+        //    case ROOM_TYPE.THREE_DOOR:
+        //        forward.HideWall(false);
+        //        left.HideWall(true);
+        //        right.HideWall(true);
+        //        behind.HideWall(true);
+        //        break;
+        //    case ROOM_TYPE.FOUR_DOOR:
+        //        forward.HideWall(true);
+        //        left.HideWall(true);
+        //        right.HideWall(true);
+        //        behind.HideWall(true);
+        //        break;
+        //    default:
+        //        break;
+        //}
     }
 
     private void Update()
