@@ -21,7 +21,7 @@ public class BaseRoom : MonoBehaviour
         gm = go.GetComponent<GameManager>();
     }
 
-    public void Init(Dictionary<string, int> wallInfo)
+    public void Init(Dictionary<string, DOOR_STATUS> wallInfo)
     {
         var wallObj = Resources.Load("wall");
         Debug.Log("init room");
@@ -33,14 +33,7 @@ public class BaseRoom : MonoBehaviour
             var wall = go.GetComponent<Wall>();
             wall.name = key;
             wall.setDir(key);
-            if (wallInfo[key] == 1)
-            {
-                wall.modifyStatus(DOOR_STATUS.Uncheck);
-            }
-            else
-            {
-                wall.modifyStatus(DOOR_STATUS.Close);
-            }
+            wall.modifyStatus(wallInfo[key]);
             walls.Add(key, go.GetComponent<Wall>());
         }
     }

@@ -42,18 +42,18 @@ public class GameManager : MonoBehaviour
         GameObject go = Instantiate(roomObj) as GameObject;
         go.transform.SetParent(this.transform, false);
         go.transform.localPosition = pos;
-        Dictionary<string, int> wallInfo = new Dictionary<string, int>();
+        Dictionary<string, DOOR_STATUS> wallInfo = new Dictionary<string, DOOR_STATUS>();
         foreach(string key in wallKeys)
         {
             if (rt == ROOM_TYPE.READY)
             {
                 if (key == "behind")
                 {
-                    wallInfo[key] = 0;
+                    wallInfo[key] = DOOR_STATUS.Close;
                 }
                 else
                 {
-                    wallInfo[key] = 1;
+                    wallInfo[key] = DOOR_STATUS.Uncheck;
                 }
             }
             else
@@ -61,11 +61,11 @@ public class GameManager : MonoBehaviour
                 if (key == keyFront[from])
                 {
                     Debug.LogFormat("random wall, front, from:{0}, key:{1}", from, key);
-                    wallInfo[key] = 1;
+                    wallInfo[key] = DOOR_STATUS.Checked;
                 }
                 else
                 {
-                    wallInfo[key] = Random.Range(0, 2);
+                    wallInfo[key] = (DOOR_STATUS)Random.Range(0, 2);
                 }
             }
         }
