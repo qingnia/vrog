@@ -31,6 +31,8 @@ public class BaseRoom : MonoBehaviour
             GameObject go = Instantiate(wallObj) as GameObject;
             go.transform.SetParent(this.gameObject.transform, false);
             var wall = go.GetComponent<Wall>();
+            wall.name = key;
+            wall.setDir(key);
             if (wallInfo[key] == 1)
             {
                 wall.modifyStatus(DOOR_STATUS.Uncheck);
@@ -70,7 +72,7 @@ public class BaseRoom : MonoBehaviour
                         Vector3 pos = CommonFun.getFrontPos(key, transform.position);
                         Debug.LogFormat("enter room, create new room, key: {0}, status: {1}, pos:{2}", key, wall.status.ToString(), pos.ToString());
                         //随机生成墙或门，避免旋转
-                        gm.CreateRoom(ROOM_TYPE.FIGHT, pos);
+                        gm.CreateRoom(ROOM_TYPE.FIGHT, pos, key);
                         walls[key].modifyStatus(DOOR_STATUS.Checked);
                     }
                 }

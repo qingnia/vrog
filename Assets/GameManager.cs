@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public int initRoomId;
     private Object roomObj;
     private bool init = false;
+    private Dictionary<string, string> keyFront = new Dictionary<string, string>();
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,10 @@ public class GameManager : MonoBehaviour
         wallKeys[1] = "left";
         wallKeys[2] = "right";
         wallKeys[3] = "behind";
+        keyFront["forward"] = "behind";
+        keyFront["behind"] = "forward";
+        keyFront["left"] = "right";
+        keyFront["right"] = "left";
         roomObj = Resources.Load("Room");
     }
 
@@ -31,11 +36,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CreateRoom(ROOM_TYPE rt, Vector3 pos)
+    public void CreateRoom(ROOM_TYPE rt, Vector3 pos, string from = "behind")
     {
         Debug.LogFormat("create room, room type:{0}", rt.ToString());
-        GameObject go = Instantiate(roomObj, pos, Quaternion.identity) as GameObject;
+        GameObject go = Instantiate(roomObj) as GameObject;
         go.transform.SetParent(this.transform, false);
+        go.transform.localPosition = pos;
         Dictionary<string, int> wallInfo = new Dictionary<string, int>();
         foreach(string key in wallKeys)
         {
@@ -52,7 +58,15 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                wallInfo[key] = Random.Range(0, 1);
+                if (key == keyFront[from])
+                {
+                    Debug.LogFormat("random wall, front, from:{0}, key:{1}", from, key);
+                    wallInfo[key] = 1;
+                }
+                else
+                {
+                    wallInfo[key] = Random.Range(0, 2);
+                }
             }
         }
         //var cfg = config.GetRoomConfig(roomId);
