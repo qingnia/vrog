@@ -41,7 +41,14 @@ public class GameManager : MonoBehaviour
         {
             if (rt == ROOM_TYPE.READY)
             {
-                wallInfo[key] = 1;
+                if (key == "behind")
+                {
+                    wallInfo[key] = 0;
+                }
+                else
+                {
+                    wallInfo[key] = 1;
+                }
             }
             else
             {
