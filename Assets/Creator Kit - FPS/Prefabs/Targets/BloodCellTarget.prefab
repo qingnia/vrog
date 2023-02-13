@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6961856894248427335}
   m_RootOrder: 2
@@ -140,8 +141,10 @@ GameObject:
   - component: {fileID: 6754320747944606146}
   - component: {fileID: 613060378875714941}
   - component: {fileID: 6689394087353256158}
+  - component: {fileID: 1349211543131901495}
+  - component: {fileID: 8820951632975397848}
   m_Layer: 10
-  m_Name: BloodCell
+  m_Name: BloodCellTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,6 +160,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8605128913963383879}
   - {fileID: 7537185215710572537}
@@ -171,10 +175,21 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2742523207603312984}
-  serializedVersion: 2
+  serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -205,12 +220,69 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2742523207603312984}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 0.4
   m_Height: 1.7
   m_Direction: 0
   m_Center: {x: -0.008023421, y: 0.7293066, z: 0}
+--- !u!114 &1349211543131901495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742523207603312984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedExposedParameters: []
+  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":418.0,"y":158.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"_position":{"x":232.0,"y":294.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"1"},{"_action":{"searchTag":"Player","saveAs":{"_name":"Player","_targetVariableID":"9641c54f-8778-4a4b-9ad2-e0c8c0a49f89"},"$type":"NodeCanvas.Tasks.Actions.FindWithTag"},"_position":{"x":21.0,"y":380.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"2"},{"_condition":{"checkTarget":{"_value":1},"distance":{"_value":10.0},"$type":"NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"},"_position":{"x":229.0,"y":383.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"3"},{"_action":{"target":{"_value":1},"speed":{"_value":2.0},"stopDistance":{"_value":0.1},"$type":"NodeCanvas.Tasks.Actions.MoveTowards"},"_position":{"x":434.0,"y":387.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"4"},{"_position":{"x":571.0,"y":309.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"Player":{"_value":1,"_name":"Player","_id":"9641c54f-8778-4a4b-9ad2-e0c8c0a49f89","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _boundGraphObjectReferences:
+  - {fileID: 0}
+  - {fileID: 1782824343737523965, guid: 6ca000ead671ebe449deb210e0a19be8, type: 3}
+  _boundGraphSource:
+    _version: 3.25
+    _category: 
+    _comments: 
+    _translation: {x: 0, y: 0}
+    _zoomFactor: 1
+  _firstActivation: 0
+  _enableAction: 0
+  _disableAction: 0
+  _lockBoundGraphPrefabOverrides: 1
+  _preInitializeSubGraphs: 0
+  _updateMode: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 8820951632975397848}
+--- !u!114 &8820951632975397848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742523207603312984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parentBlackboard: {fileID: 0}
+  _serializedBlackboard: '{"_variables":{}}'
+  _objectReferences: []
+  _serializedVariables: []
 --- !u!1 &6681335294391022138
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +311,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6961856894248427335}
   m_RootOrder: 1
@@ -366,11 +439,16 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 6961856894248427335}
     m_Modifications:
     - target: {fileID: 100000, guid: 8226672356b74174cbe023b9736222f5, type: 3}
       propertyPath: m_Name
       value: BloodCell
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8226672356b74174cbe023b9736222f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8226672356b74174cbe023b9736222f5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -385,6 +463,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8226672356b74174cbe023b9736222f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8226672356b74174cbe023b9736222f5, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -394,14 +476,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8226672356b74174cbe023b9736222f5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8226672356b74174cbe023b9736222f5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8226672356b74174cbe023b9736222f5, type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8226672356b74174cbe023b9736222f5, type: 3}
@@ -421,6 +495,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 29f277a5d3d113b4fb97a2004d55f446, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8226672356b74174cbe023b9736222f5, type: 3}
 --- !u!4 &8605128913963383879 stripped
 Transform:
