@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
@@ -8,6 +9,17 @@ public class MonsterManager : MonoBehaviour
     public int monsterLimieNum = 0;
     private Dictionary<int, GameObject> monsters = new Dictionary<int, GameObject>();
     private int initNum = 0;
+    private NavMeshSurface navMeshSurface;
+
+    private void Awake()
+    {
+       navMeshSurface= GetComponent<NavMeshSurface>();
+    }
+
+    private void RegenerateNavMesh()
+    {
+        navMeshSurface.BuildNavMesh();
+    }
     // Start is called before the first frame update
     void Start()
     {

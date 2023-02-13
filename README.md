@@ -8,6 +8,16 @@ https://blog.csdn.net/NSJim/article/details/123253659
 # VS安装插件，强制保存为UTF-8
 扩展 --> 管理扩展 --> 联机 --> 搜索force UTF-8（No BOM) --> 下载 --> 重启VS
 ```
+### AI插件NodeCanvas
+[官网](https://nodecanvas.paradoxnotion.com/)
+
+[nav mesh 官网文档](https://docs.unity3d.com/2022.2/Documentation/Manual/Navigation.html)
+
+[nav导航](https://blog.csdn.net/akuojustdoit/article/details/114967888)
+
+[动态导航](https://www.bilibili.com/read/cv13695393)
+```sh
+```
 
 #### 介绍
 {**以下是 Gitee 平台说明，您可以替换此简介**
