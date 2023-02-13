@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NodeCanvas.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
@@ -33,6 +34,9 @@ public class Target : MonoBehaviour
         m_CurrentHealth = health;
         if(IdleSource != null)
             IdleSource.time = Random.Range(0.0f, IdleSource.clip.length);
+
+        var blackBoard = GetComponent<Blackboard>();
+        blackBoard.SetVariableValue("Player", GameObject.FindGameObjectWithTag("Player"));
     }
 
     public void Got(float damage)
