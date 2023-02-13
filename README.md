@@ -11,12 +11,15 @@ https://blog.csdn.net/NSJim/article/details/123253659
 ### AI插件NodeCanvas
 [官网](https://nodecanvas.paradoxnotion.com/)
 
+[节点概述](https://www.jianshu.com/p/a12470577fd0)
+
 [nav mesh 官网文档](https://docs.unity3d.com/2022.2/Documentation/Manual/Navigation.html)
 
 [nav导航](https://blog.csdn.net/akuojustdoit/article/details/114967888)
 
 [动态导航](https://www.bilibili.com/read/cv13695393)
 ```sh
+dynamic是指每帧重复判断，选择节点一般都要做，只有BOSS二阶段这种特殊情况才不需要勾选
 ```
 
 #### 介绍
