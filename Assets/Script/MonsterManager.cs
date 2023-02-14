@@ -28,7 +28,6 @@ public class MonsterManager : MonoBehaviour
     void Update()
     {
         navMeshSurface.BuildNavMesh();
-        Debug.LogFormat("nav data");
         if (initNum < monsterLimieNum)
         {
             int index = Random.Range(0, monsterTemplate.Length);
