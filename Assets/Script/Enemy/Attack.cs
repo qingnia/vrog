@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using System;
 using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions{
@@ -9,9 +10,12 @@ namespace NodeCanvas.Tasks.Actions{
 
         [RequiredField]
         public BBParameter<GameObject> target;
+
+		private UnityEngine.Object bulletPrefab;
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit(){
+			bulletPrefab = Resources.Load("EnemyBullet");
 			return null;
 		}
 
@@ -19,7 +23,12 @@ namespace NodeCanvas.Tasks.Actions{
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute()
-        {
+		{
+            var bullet = UnityEngine.Object.Instantiate(bulletPrefab) as GameObject;
+			if (bullet != null)
+			{
+				bullet.GetComponent<Target>().InitBullet(agent.transform.position, target.value.transform.position);
+			}
             Debug.LogFormat("attack player");
             EndAction(true);
 		}

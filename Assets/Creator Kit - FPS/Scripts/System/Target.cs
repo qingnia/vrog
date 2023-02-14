@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Unity.Services.Analytics.Internal;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 using Vector3 = UnityEngine.Vector3;
 
 public class Target : MonoBehaviour
@@ -22,6 +24,8 @@ public class Target : MonoBehaviour
     bool m_Destroyed = false;
     float m_CurrentHealth;
 
+    private Vector3 targetPos = Vector3.zero;
+
     void Awake()
     {
         Helpers.RecursiveLayerChange(transform, LayerMask.NameToLayer("Target"));
@@ -35,6 +39,24 @@ public class Target : MonoBehaviour
         m_CurrentHealth = health;
         if(IdleSource != null)
             IdleSource.time = Random.Range(0.0f, IdleSource.clip.length);
+    }
+    private void Update()
+    {
+        if (targetPos != Vector3.zero)
+        {
+            if ((transform.position - targetPos).magnitude <= 1)
+            {
+                targetPos= Vector3.zero;
+                return;
+            }
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, 4 * Time.deltaTime);
+        }
+    }
+
+    public void InitBullet(Vector3 orgPos, Vector3 targetPos)
+    {
+        transform.position = orgPos;
+        this.targetPos = targetPos;
     }
 
     public void Got(float damage)
