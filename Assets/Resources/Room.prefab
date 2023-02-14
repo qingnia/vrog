@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3410767820995066846}
   - component: {fileID: 5070289379421136964}
   - component: {fileID: 368383785539213477}
-  - component: {fileID: 8810623454415629924}
+  - component: {fileID: -3447722310005383412}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -66,9 +66,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterTemplate:
   - {fileID: 2742523207603312984, guid: 126f10c54fce41d4aa610945f0da1c61, type: 3}
-  - {fileID: 8070109232193553997, guid: 547e1bb5b288bc14187ab3bdf87891f6, type: 3}
-  monsterLimieNum: 5
---- !u!114 &8810623454415629924
+  monsterLimieNum: 1
+--- !u!114 &-3447722310005383412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,7 +96,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 002ec34e8ea0b8545a8c18deed010cfc, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 68cc5dfa7bec5ff42816374ebc8c5c70, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &3410767821628100962
 GameObject:
