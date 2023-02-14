@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5070289379421136964}
   - component: {fileID: 368383785539213477}
   - component: {fileID: -3447722310005383412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 3410767821628100974}
   - component: {fileID: 3410767821628100973}
   - component: {fileID: 3410767821628100972}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 7404554667318326202}
   - component: {fileID: 2406357042002162434}
   - component: {fileID: 568330952320617304}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

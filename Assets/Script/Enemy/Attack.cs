@@ -27,7 +27,7 @@ namespace NodeCanvas.Tasks.Actions{
             var bullet = UnityEngine.Object.Instantiate(bulletPrefab) as GameObject;
 			if (bullet != null)
 			{
-				bullet.GetComponent<Target>().InitBullet(agent.transform.position, target.value.transform.position);
+				bullet.GetComponent<EnemyBullet>().InitBullet(agent.transform.position, target.value.transform.position);
 			}
             Debug.LogFormat("attack player");
             EndAction(true);
