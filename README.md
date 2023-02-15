@@ -38,6 +38,10 @@ dynamic是指每帧重复判断，选择节点一般都要做，只有BOSS二阶
 Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
 无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
 
+### 快速创建自定义脚本/文件
+修改Editor/CustomUnityEditor，支持新选项
+在Edutor/ScriptTemplates下创建文件模板，对应的代码读新模板
+
 #### 软件架构
 软件架构说明
 
