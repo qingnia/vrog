@@ -41,7 +41,6 @@
 置底中间道具列表，偏右道具背包
 ```
 ## 手机支持
-[joystick 接入](https://blog.csdn.net/Vaccae/article/details/111596223)
 ```sh
 将FPS的基本操作对应暴露前端UI，并且绑定同样的事件
 难点在摇杆的拖拽操作
@@ -97,6 +96,8 @@ vrog1.0只有战斗房间，之后会扩展休息室
 5. 其他游戏自定义效果
 ```
 ## 数据结构
+### 基本信息struct
+id,name,icon,desc,cd,cost,timeline,
 ```sh
 要先创建技能的prefab，包含基础属性
 如果技能包含时间轴，创建一个时间轴做绑定即可

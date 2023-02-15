@@ -21,6 +21,8 @@ https://blog.csdn.net/NSJim/article/details/123253659
 ```sh
 dynamic是指每帧重复判断，选择节点一般都要做，只有BOSS二阶段这种特殊情况才不需要勾选
 ```
+### 摇杆
+[joystick 接入](https://blog.csdn.net/Vaccae/article/details/111596223)
 
 #### 介绍
 {**以下是 Gitee 平台说明，您可以替换此简介**
