@@ -2,28 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction
+public enum DATA_TYPE
 {
-    dirUp, dirRight, dirDown, dirLeft, dirStop, dirNone,
+    INT, FLOAT, BOOL, STRING
 }
 
-public enum RetStatus
-{
-    rsSuccess, rsFail,
-}
-
-public enum PlayerStatus
-{
-    psEnter, psReady, psStart, psIngame, psDead,
-}
-
-public enum examType
-{
-    etSpeed, etStrength, etSpirit, etKnowledge,
-    etPhysicalDamage, etMindDamage,
-    etDice, etItem, //可以使用物品
-    etNone,
-};
 public enum DOOR_STATUS
 {
     Close,

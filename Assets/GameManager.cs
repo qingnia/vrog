@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     string[] wallKeys = new string[4];
     public GameObject player;
-    public Config config;
     public int initRoomId;
     private Object roomObj;
     private bool init = false;
@@ -24,6 +23,7 @@ public class GameManager : MonoBehaviour
         keyFront["left"] = "right";
         keyFront["right"] = "left";
         roomObj = Resources.Load("Room");
+        Config.Bind(gameObject);
     }
 
     // Update is called once per frame
@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        //var cfg = config.GetRoomConfig(roomId);
         go.GetComponent<BaseRoom>().Init(wallInfo);
     }
 

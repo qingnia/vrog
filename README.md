@@ -24,6 +24,15 @@ dynamic是指每帧重复判断，选择节点一般都要做，只有BOSS二阶
 ### 摇杆
 [joystick 接入](https://blog.csdn.net/Vaccae/article/details/111596223)
 
+### timeline
+[基本介绍](https://blog.csdn.net/linxinfa/article/details/108374878)
+
+[摄像机动画](https://blog.csdn.net/qq_39435884/article/details/116232225)
+
+[自定义新track](https://blog.csdn.net/qq_37390527/article/details/111714097)
+
+[概念(图多但费劲)](https://blog.csdn.net/js0907/article/details/108250190)
+
 #### 介绍
 {**以下是 Gitee 平台说明，您可以替换此简介**
 Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台

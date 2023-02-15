@@ -1,49 +1,55 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+
+[Serializable]
+public class ConfigData
+{
+    public string key;
+    public TextAsset textAsset;
+    Dictionary<string, DATA_TYPE> dataTypes;
+}
 
 public class Config : MonoBehaviour
 {
-    private Dictionary<int, Dictionary<string, string>> roomConfig = new Dictionary<int, Dictionary<string, string>>();
-    private Dictionary<int, Dictionary<string, string>> playerConfig = new Dictionary<int, Dictionary<string, string>>();
-    private Dictionary<int, Dictionary<string, string>> resConfig = new Dictionary<int, Dictionary<string, string>>();
-
-    public TextAsset player;
-    public TextAsset room;
-    public TextAsset res;
-
-    public Dictionary<string, string> GetRoomConfig(int roomID)
+    public ConfigData[] configDatas = null;
+    public static Config Instance { get; private set; }
+    public static void Bind(GameObject go)
     {
-        if (roomConfig.Count == 0)
+        Instance = go.GetComponent<Config>();
+    }
+
+    public Dictionary<string, Dictionary<int, Dictionary<string, string>>> configs = new Dictionary<string, Dictionary<int, Dictionary<string, string>>>();
+
+    public Dictionary<string, string> GetConfig(string key, int id)
+    {
+        if (!configs.ContainsKey(key))
         {
-            //TextAsset binAsset = Resources.Load("Tables/Room", typeof(TextAsset)) as TextAsset;
-            //roomConfig = LoadCsvData(binAsset);
-            roomConfig = LoadCsvData(room);
+            TextAsset textAsset = null;
+            foreach (var config in configDatas)
+            {
+                if (config.key == key)
+                {
+                    textAsset = config.textAsset;
+                    break;
+                }
+            }
+            if (textAsset == null)
+            {
+                Debug.LogErrorFormat("can't find config asset, key: {0}", key);
+                return null;
+            }
+            configs[key] = LoadCsvData(textAsset);
         }
-        if (!roomConfig.ContainsKey(roomID))
+        var cfg = configs[key];
+        if (!cfg.ContainsKey(id))
         {
-            Debug.LogErrorFormat("no room cfg, roomID:{0}", roomID);
+            Debug.LogErrorFormat("no cfg, key:{0}, id: {1}", key, id);
             return new Dictionary<string, string>();
         }
-        return roomConfig[roomID];
-    }
-
-    public Dictionary<string, string> GetPlayerConfig(int playerID)
-    {
-        if (playerConfig.Count == 0)
-        {
-            playerConfig = LoadCsvData(player);
-        }
-        return playerConfig[playerID];
-    }
-
-    public Dictionary<string, string> GetResConfig(int resID)
-    {
-        if (resConfig.Count == 0)
-        {
-            resConfig = LoadCsvData(res);
-        }
-        return resConfig[resID];
+        return cfg[id];
     }
 
     private Dictionary<int, Dictionary<string, string>> LoadCsvData(TextAsset ta)
@@ -58,7 +64,7 @@ public class Config : MonoBehaviour
             {
                 break;
             }
-            //lineArray[i] = lineArray[i].Substring(0, lineArray[i].Length - 1);
+            lineArray[i] = lineArray[i].Substring(0, lineArray[i].Length - 1);
         }
 
         //记录每行记录中的各字段内容
@@ -73,7 +79,7 @@ public class Config : MonoBehaviour
 
         int id = 0;
         //逐行读取CSV中的数据
-        for (int i = 2; i < lineArray.Length - 2; i++)
+        for (int i = 2; i < lineArray.Length - 1; i++)
         {
             //strLine = Common.ConvertStringUTF8(strLine, encoding);
             //strLine = Common.ConvertStringUTF8(strLine);
