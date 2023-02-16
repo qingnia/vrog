@@ -1,18 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using Unity.AI.Navigation;
-using UnityEditor.AI;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class MonsterManager : MonoBehaviour
 {
-    public Object[] monsterTemplate;
-    public int monsterLimieNum = 0;
-    private Dictionary<int, GameObject> monsters = new Dictionary<int, GameObject>();
-    private int initNum = 0;
+    public int[] monsterConfigIds= null;
+    public int monsterLimitNum = 0;
     private NavMeshSurface navMeshSurface;
+    private BaseAttribute[] enemies = null;
 
     private void Awake()
     {
@@ -22,24 +18,42 @@ public class MonsterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemies = new BaseAttribute[monsterLimitNum];
+        //创建房间后立即进行怪物的数据初始化
+        for (int i = 0; i < monsterLimitNum; i++)
+        {
+            BaseAttribute ba = new BaseAttribute();
+            int index = Random.Range(0, monsterConfigIds.Length);
+            ba.Init(ba, monsterConfigIds[index]);
+            enemies[i] = ba;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         navMeshSurface.BuildNavMesh();
-        if (initNum < monsterLimieNum)
+    }
+    public void EnterRoom()
+    {
+        //进入房间后根据怪物数据用池子创建怪物对象
+        for (int i = 0; i < enemies.Length; i++)
         {
-            int index = Random.Range(0, monsterTemplate.Length);
-            GameObject go = Instantiate(monsterTemplate[index]) as GameObject;
+            var obj = Resources.Load(enemies[i].prefabName);
+            PoolSystem.Instance.InitPool(obj, 5);
+            var go = PoolSystem.Instance.GetInstance<GameObject>(obj);
             go.transform.SetParent(this.gameObject.transform, false);
-            //var pos = Vector3.zero; 
-            //pos.y = 2;
-            //pos.x = pos.x + Random.Range(-8, 9);
-            //pos.z = pos.z + Random.Range(-8, 9);
-            //Debug.LogFormat("create enemy, index; {0}, pos: {1}", index, pos.ToString());
-            //go.transform.position = pos;
-            initNum++;
+            enemies[i].go = go;
+        }
+    }
+    public void LeaveRoom()
+    {
+        //离开房间后怪物对象放进对象池，保留数据
+        //进入房间后根据怪物数据用池子创建怪物对象
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].go.SetActive(false);
+            enemies[i].go = null;
         }
     }
 }

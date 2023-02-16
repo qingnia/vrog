@@ -5,6 +5,12 @@ using UnityEngine.TextCore.Text;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+    public static void Bind(GameObject go)
+    {
+        Instance = go.GetComponent<GameManager>();
+    }
+
     string[] wallKeys = new string[4];
     public GameObject player;
     public int initRoomId;
@@ -12,6 +18,7 @@ public class GameManager : MonoBehaviour
     private bool init = false;
     private Dictionary<string, string> keyFront = new Dictionary<string, string>();
     // Start is called before the first frame update
+
     void Start()
     {
         wallKeys[0] = "forward";
@@ -24,6 +31,7 @@ public class GameManager : MonoBehaviour
         keyFront["right"] = "left";
         roomObj = Resources.Load("Room");
         Config.Bind(gameObject);
+        Bind(gameObject);
     }
 
     // Update is called once per frame

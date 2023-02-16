@@ -51,7 +51,6 @@ MonoBehaviour:
   rotationY: 0
   roomType: 2
   player: {fileID: 0}
-  gm: {fileID: 0}
 --- !u!114 &368383785539213477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,9 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d817c3fb1a3388544a19cfdb43373085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterTemplate:
-  - {fileID: 2742523207603312984, guid: 126f10c54fce41d4aa610945f0da1c61, type: 3}
-  monsterLimieNum: 1
+  monsterConfigIds: 01000000
+  monsterLimitNum: 5
 --- !u!114 &-3447722310005383412
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,15 +10,12 @@ public class BaseRoom : MonoBehaviour
     public Dictionary<string, Wall> walls = new Dictionary<string, Wall>();
     public string roomType;
     public GameObject player;
-    public GameManager gm;
     private bool enterd = false;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Character");
-        var go = GameObject.Find("GameManager");
-        gm = go.GetComponent<GameManager>();
     }
 
     public void Init(Dictionary<string, DOOR_STATUS> wallInfo)
@@ -65,7 +62,7 @@ public class BaseRoom : MonoBehaviour
                         Vector3 pos = CommonFun.getFrontPos(key, transform.position);
                         Debug.LogFormat("enter room, create new room, key: {0}, status: {1}, pos:{2}", key, wall.status.ToString(), pos.ToString());
                         //随机生成墙或门，避免旋转
-                        gm.CreateRoom(ROOM_TYPE.FIGHT, pos, key);
+                        GameManager.Instance.CreateRoom(ROOM_TYPE.FIGHT, pos, key);
                         walls[key].modifyStatus(DOOR_STATUS.Checked);
                     }
                 }

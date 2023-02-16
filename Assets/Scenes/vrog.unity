@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 696996755}
   - component: {fileID: 696996756}
   - component: {fileID: 696996757}
+  - component: {fileID: 696996758}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -344,6 +345,38 @@ MonoBehaviour:
   configDatas:
   - key: skill
     textAsset: {fileID: 4900000, guid: 3ffbeae030667f444911b5d8d790ebee, type: 3}
+  - key: fighter
+    textAsset: {fileID: 4900000, guid: 74f7bf95b1ccba644a93ee2235402678, type: 3}
+--- !u!114 &696996758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696996754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 7801789c766477d4d97d737c261c0b44, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 696996754}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SendMessage
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &757582095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -453,6 +486,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1903917187}
+    - targetCorrespondingSourceObject: {fileID: 1782824343737523965, guid: 6ca000ead671ebe449deb210e0a19be8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1903917194}
   m_SourcePrefab: {fileID: 100100000, guid: 6ca000ead671ebe449deb210e0a19be8, type: 3}
 --- !u!1001 &1349374444
 PrefabInstance:
@@ -589,3 +626,16 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 757582095}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1903917194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903917179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a4efb52dd356a4f8ee3205d4a752b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  go: {fileID: 0}
