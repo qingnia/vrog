@@ -57,8 +57,11 @@ public class MonsterManager : MonoBehaviour
         //进入房间后根据怪物数据用池子创建怪物对象
         for (int i = 0; i < enemies.Length; i++)
         {
-            enemies[i].go.SetActive(false);
-            enemies[i].go = null;
+            if (enemies[i].go)
+            {
+                enemies[i].go.SetActive(false);
+                enemies[i].go = null;
+            }
         }
     }
 }

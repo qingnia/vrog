@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fighter : MonoBehaviour
 {
-    public BaseAttribute baseAttribute { get; set; }
+    public BaseAttribute baseAttribute;
 
     public ParticleSystem DestroyedEffect;
 

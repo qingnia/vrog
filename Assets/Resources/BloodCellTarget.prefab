@@ -351,6 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966e2714c1d19d44086d29ecb3440c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseAttribute:
+    attack: 0
   DestroyedEffect: {fileID: 0}
   HitPlayer: {fileID: 5180989449417381527}
   IdleSource: {fileID: 1794190175530118467}

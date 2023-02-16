@@ -1,16 +1,17 @@
 using System;
 using UnityEngine;
 
+[Serializable]
 public class BaseAttribute
 {
-    public int curHealth { get; private set; }
-    public int maxHealth { get; private set; }
-    public int attack { get; private set; }
-    public int defend { get; private set; }
-    public int speed { get; private set; }
-    public int attackInterval { get; private set; }
-    public int attackRange { get; private set; }
-    public string prefabName { get; private set; }
+    public int curHealth { get; set; }
+    public int maxHealth { get; set; }
+    public int attack;
+    public int defend { get; set; }
+    public int speed { get; set; }
+    public int attackInterval { get; set; }
+    public int attackRange { get; set; }
+    public string prefabName { get; set; }
     public GameObject go { get; set; }
     public virtual void Init(BaseAttribute ba, int id)
     {
@@ -35,8 +36,4 @@ public class BaseAttribute
         }
     }
 
-    public virtual void Attack(BaseAttribute target)
-    {
-        
-    }
 }
