@@ -34,16 +34,21 @@ public class MonsterManager : MonoBehaviour
     {
         navMeshSurface.BuildNavMesh();
     }
+
     public void EnterRoom()
     {
         //进入房间后根据怪物数据用池子创建怪物对象
         for (int i = 0; i < enemies.Length; i++)
         {
-            var obj = Resources.Load(enemies[i].prefabName);
+            var enemy = enemies[i];
+            if (enemy.curHealth < 0)
+                continue;
+            var obj = Resources.Load(enemy.prefabName);
             PoolSystem.Instance.InitPool(obj, 5);
             var go = PoolSystem.Instance.GetInstance<GameObject>(obj);
+            go.GetComponent<Fighter>().baseAttribute = enemy;
             go.transform.SetParent(this.gameObject.transform, false);
-            enemies[i].go = go;
+            enemy.go = go;
         }
     }
     public void LeaveRoom()

@@ -26,10 +26,6 @@ public class BaseAttribute
     }
     public BaseAttribute data { get; private set; }
 
-    public virtual void Dead()
-    {
-
-    }
     public virtual void AddBlood(int add)
     {
         curHealth += add;

@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 6022074247928418074}
   - component: {fileID: 6881859091845831770}
   - component: {fileID: 6949285288515820636}
+  - component: {fileID: 8094301764728706724}
   m_Layer: 10
   m_Name: BloodCellTarget
   m_TagString: Untagged
@@ -205,7 +206,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2742523207603312984}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21572170bf3eef94dba3f7ca0f06525a, type: 3}
   m_Name: 
@@ -338,6 +339,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pd: {fileID: 0}
+--- !u!114 &8094301764728706724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742523207603312984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 966e2714c1d19d44086d29ecb3440c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyedEffect: {fileID: 0}
+  HitPlayer: {fileID: 5180989449417381527}
+  IdleSource: {fileID: 1794190175530118467}
 --- !u!1 &6681335294391022138
 GameObject:
   m_ObjectHideFlags: 0
