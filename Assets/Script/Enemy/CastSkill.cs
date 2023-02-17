@@ -21,8 +21,7 @@ namespace NodeCanvas.Tasks.Actions{
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
             var ct = agent.GetComponent<SkillCaster>();
-			ct.CastSkill(SkillID.value);
-            EndAction(true);
+            EndAction(ct.CastSkill(SkillID.value));
 		}
 
 		//Called once per frame while the action is active.

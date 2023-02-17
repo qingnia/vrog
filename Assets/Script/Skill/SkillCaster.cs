@@ -56,20 +56,19 @@ public class SkillCaster : MonoBehaviour
         
     }
 
-    public void CastSkill(int skillID)
+    public bool CastSkill(int skillID)
     {
         Debug.LogFormat("try cast skill, id:{0}", skillID);
         var cfg = Config.Instance.GetConfig("skill", skillID);
         if (!skillData.ContainsKey(skillID))
         {
             skillData.Add(skillID, new CastSkillData(skillID));
-            //skillData[skillID] = new CastSkillData(skillID);
         }
         var data = skillData[skillID];
         //检查会有很多种条件，先做CD
         if (!data.checkCD())
         {
-            return;
+            return false;
         }
         //条件全部检查完，再标记施放
         data.RecordCast();
@@ -83,5 +82,6 @@ public class SkillCaster : MonoBehaviour
                 pd.Play();
             }
         }
+        return true;
     }
 }
