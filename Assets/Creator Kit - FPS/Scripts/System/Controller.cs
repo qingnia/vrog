@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using NodeCanvas.Tasks.Actions;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -167,25 +168,27 @@ public class Controller : MonoBehaviour
             move = transform.TransformDirection(move);
             m_CharacterController.Move(move);
             
-            // Turn player
-            float turnPlayer =  Input.GetAxis("Mouse X") * MouseSensitivity;
-            m_HorizontalAngle = m_HorizontalAngle + turnPlayer;
+            if (Input.GetMouseButton(0))
+            {
+                // Turn player
+                float turnPlayer = Input.GetAxis("Mouse X") * MouseSensitivity;
+                m_HorizontalAngle = m_HorizontalAngle + turnPlayer;
 
-            if (m_HorizontalAngle > 360) m_HorizontalAngle -= 360.0f;
-            if (m_HorizontalAngle < 0) m_HorizontalAngle += 360.0f;
-            
-            Vector3 currentAngles = transform.localEulerAngles;
-            currentAngles.y = m_HorizontalAngle;
-            transform.localEulerAngles = currentAngles;
+                if (m_HorizontalAngle > 360) m_HorizontalAngle -= 360.0f;
+                if (m_HorizontalAngle < 0) m_HorizontalAngle += 360.0f;
 
-            // Camera look up/down
-            var turnCam = -Input.GetAxis("Mouse Y");
-            turnCam = turnCam * MouseSensitivity;
-            m_VerticalAngle = Mathf.Clamp(turnCam + m_VerticalAngle, -89.0f, 89.0f);
-            currentAngles = CameraPosition.transform.localEulerAngles;
-            currentAngles.x = m_VerticalAngle;
-            CameraPosition.transform.localEulerAngles = currentAngles;
-  
+                Vector3 currentAngles = transform.localEulerAngles;
+                currentAngles.y = m_HorizontalAngle;
+                transform.localEulerAngles = currentAngles;
+
+                // Camera look up/down
+                var turnCam = -Input.GetAxis("Mouse Y");
+                turnCam = turnCam * MouseSensitivity;
+                m_VerticalAngle = Mathf.Clamp(turnCam + m_VerticalAngle, -89.0f, 89.0f);
+                currentAngles = CameraPosition.transform.localEulerAngles;
+                currentAngles.x = m_VerticalAngle;
+                CameraPosition.transform.localEulerAngles = currentAngles;
+            }
             m_Weapons[m_CurrentWeapon].triggerDown = Input.GetMouseButton(0);
 
             Speed = move.magnitude / (PlayerSpeed * Time.deltaTime);
