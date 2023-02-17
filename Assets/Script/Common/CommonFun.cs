@@ -4,9 +4,8 @@ using UnityEngine;
 using System;
 using UnityEditorInternal;
 
-public class CommonFun : MonoBehaviour
+public class CommonFun
 {
-
     public static List<int> String2IntList(string src, char split)
     {
         string[] str_array = src.Split('|');

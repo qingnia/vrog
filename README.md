@@ -8,7 +8,20 @@ https://blog.csdn.net/NSJim/article/details/123253659
 # VS安装插件，强制保存为UTF-8
 扩展 --> 管理扩展 --> 联机 --> 搜索force UTF-8（No BOM) --> 下载 --> 重启VS
 ```
+## C#语法和接口
+### 值类型和引用类型的区别
+[参考博文](https://www.cnblogs.com/soulsjie/p/13625911.html)
+```sh
+struct是值类型，class是引用类型
+如果赋值struct，修改变量后原值还是不变，但是改成class就可以修改原值
+```
+[时区TimeZoneInfo类](https://learn.microsoft.com/zh-cn/dotnet/api/system.timezoneinfo?view=net-7.0)
+
+[delegate委托](https://blog.csdn.net/qq_42345116/article/details/123408419)
 ## 项目用到的unity功能及教程
+### unity官方扩展插件(待了解)
+[本地化/多语言](https://docs.unity3d.com/Packages/com.unity.localization@1.4/manual/index.html)
+[内存分析](https://docs.unity3d.com/Packages/com.unity.memoryprofiler@1.0/manual/index.html)
 ### AI插件NodeCanvas
 [官网](https://nodecanvas.paradoxnotion.com/)
 
@@ -39,4 +52,6 @@ dynamic是指每帧重复判断，选择节点一般都要做，只有BOSS二阶
 修改Editor/CustomUnityEditor，支持新选项
 在Edutor/ScriptTemplates下创建文件模板，对应的代码读新模板
 ```
+### 定义变量的get/set方法后编辑器不可见，挂脚本解决
+[源码地址](https://gitcode.net/mirrors/LMNRY/SetProperty.git)
 
