@@ -19,9 +19,17 @@ struct是值类型，class是引用类型
 
 [delegate委托](https://blog.csdn.net/qq_42345116/article/details/123408419)
 ## 项目用到的unity功能及教程
-### unity官方扩展插件(待了解)
-[本地化/多语言](https://docs.unity3d.com/Packages/com.unity.localization@1.4/manual/index.html)
-[内存分析](https://docs.unity3d.com/Packages/com.unity.memoryprofiler@1.0/manual/index.html)
+### UI
+#### UI ToolKit
+```sh
+游戏UI用UGUI和UI ToolKit都可以，编辑器的UI开发官方推荐用ToolKit
+UI ToolKit参考了HTML+CSS+JS的工作流，动画和数据支持的更好
+UI ToolKit更接近一个窗口一个对象，需要一套管理，可惜不支持3D场景也不支持shader
+UGUI是传统树状gameObject，估计要被淘汰掉
+```
+> 本项目重点不在UI，再加上长远目标是VR/AR，所以选择UGUI
+[官方文档](https://docs.unity3d.com/2022.2/Documentation/Manual/UI-system-compare.html)
+#### UGUI
 ### AI插件NodeCanvas
 [官网](https://nodecanvas.paradoxnotion.com/)
 
@@ -47,6 +55,9 @@ dynamic是指每帧重复判断，选择节点一般都要做，只有BOSS二阶
 
 [概念(图多但费劲)](https://blog.csdn.net/js0907/article/details/108250190)
 
+### unity官方扩展插件(待了解)
+[本地化/多语言](https://docs.unity3d.com/Packages/com.unity.localization@1.4/manual/index.html)
+[内存分析](https://docs.unity3d.com/Packages/com.unity.memoryprofiler@1.0/manual/index.html)
 ### 快速创建自定义脚本/文件
 ```sh
 修改Editor/CustomUnityEditor，支持新选项

@@ -139,6 +139,18 @@ id,name,icon,desc,cd,cost,timeline
 如果技能包含时间轴，创建一个时间轴做绑定即可
 如果包含流程图，创建事件和多个时间轴，通过代码/特殊编辑技巧实现关联
 ```
+## 战斗系统开发
+### AI
+1. 编辑NodeCanvas行为树，做管理
+2. 扩展支持新的condition和action，action链接Caster，施放技能
+### timeLine
+1. 时间线上编辑动作、特效、音效
+2. 扩展支持asset和behaviour，behaviour链接Caster，施放技能
+### 技能扩展
+1. 配置Skills.csv，管理技能
+2. 创建相应的timeLine，编辑真正的技能链
+3. 扩展支持HandlerBase，支持新的响应效果
+4. 扩展SkillBase，支持简单的技能，如被动技能、子弹技能、射线技能
 ## 房间
 ### 设置
 1. 可生成怪物列表
