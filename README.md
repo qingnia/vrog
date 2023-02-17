@@ -30,6 +30,8 @@ UI ToolKit更接近一个窗口一个对象，需要一套管理，可惜不支�
 UGUI是传统树状gameObject，估计要被淘汰掉
 ```
 #### UGUI
+### 本地化插件Localization
+[官方文档](https://docs.unity3d.com/Packages/com.unity.localization@1.4/manual/QuickStartGuideWithVariants.html#localize-strings)
 ### AI插件NodeCanvas
 [官网](https://nodecanvas.paradoxnotion.com/)
 
@@ -56,7 +58,8 @@ dynamic是指每帧重复判断，选择节点一般都要做，只有BOSS二阶
 [概念(图多但费劲)](https://blog.csdn.net/js0907/article/details/108250190)
 
 ### unity官方扩展插件(待了解)
-[本地化/多语言](https://docs.unity3d.com/Packages/com.unity.localization@1.4/manual/index.html)
+[UI ToolKit](https://docs.unity3d.com/2022.2/Documentation/Manual/UIElements.html)
+
 [内存分析](https://docs.unity3d.com/Packages/com.unity.memoryprofiler@1.0/manual/index.html)
 ### 快速创建自定义脚本/文件
 ```sh
