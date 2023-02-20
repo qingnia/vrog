@@ -182,14 +182,14 @@ public class GameSystem : MonoBehaviour
             GameSystemInfo.Instance.UpdateTimer(m_Timer);
         }
 
-        Transform playerTransform = Controller.Instance.transform;
+        //Transform playerTransform = Controller.Instance.transform;
         
         
-        //UI Update
-        MinimapUI.Instance.UpdateForPlayerTransform(playerTransform);
+        ////UI Update
+        //MinimapUI.Instance.UpdateForPlayerTransform(playerTransform);
        
-        if(FullscreenMap.Instance.gameObject.activeSelf)
-            FullscreenMap.Instance.UpdateForPlayerTransform(playerTransform);
+        //if(FullscreenMap.Instance.gameObject.activeSelf)
+        //    FullscreenMap.Instance.UpdateForPlayerTransform(playerTransform);
     }
 
     public float GetFinalTime()

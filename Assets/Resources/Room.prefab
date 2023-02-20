@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterConfigIds: 01000000
-  monsterLimitNum: 1
+  monsterLimitNum: 0
 --- !u!114 &-3447722310005383412
 MonoBehaviour:
   m_ObjectHideFlags: 0

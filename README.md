@@ -22,6 +22,10 @@ struct是值类型，class是引用类型
 ### UI
 > 本项目重点不在UI，再加上长远目标是VR/AR，所以选择UGUI
 [官方文档](https://docs.unity3d.com/2022.2/Documentation/Manual/UI-system-compare.html)
+
+[根据alpha值判断是否可点击，实现非长方形按钮](https://www.cnblogs.com/notorious/p/12960386.html)
+
+[pivot与anchor的使用](https://juejin.cn/post/6992876202507632677)
 #### UI ToolKit
 ```sh
 游戏UI用UGUI和UI ToolKit都可以，编辑器的UI开发官方推荐用ToolKit
