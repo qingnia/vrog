@@ -20,16 +20,6 @@ struct是值类型，class是引用类型
 [delegate委托](https://blog.csdn.net/qq_42345116/article/details/123408419)
 ## 项目用到的unity功能及教程
 ### UI
-> 本项目重点不在UI，再加上长远目标是VR/AR，所以选择UGUI
-[官方文档](https://docs.unity3d.com/2022.2/Documentation/Manual/UI-system-compare.html)
-
-[根据alpha值判断是否可点击，实现非长方形按钮](https://www.cnblogs.com/notorious/p/12960386.html)
-
-[pivot与anchor的使用](https://juejin.cn/post/6992876202507632677)
-
-[unity生成中文字体库](https://blog.csdn.net/zhunju0089/article/details/103125168)
-
-[字体缺少特定符号导致unity告警](https://www.bilibili.com/read/cv21557672)
 #### UI ToolKit
 ```sh
 游戏UI用UGUI和UI ToolKit都可以，编辑器的UI开发官方推荐用ToolKit
@@ -37,7 +27,22 @@ UI ToolKit参考了HTML+CSS+JS的工作流，动画和数据支持的更好
 UI ToolKit更接近一个窗口一个对象，需要一套管理，可惜不支持3D场景也不支持shader
 UGUI是传统树状gameObject，估计要被淘汰掉
 ```
-#### UGUI
+> 本项目重点不在UI，再加上长远目标是VR/AR，所以选择UGUI
+
+[官方文档](https://docs.unity3d.com/2022.2/Documentation/Manual/UI-system-compare.html)
+
+#### 布局
+[pivot与anchor的使用](https://juejin.cn/post/6992876202507632677)
+#### 字体
+> 常规语言不要用TextMeshPro，美术的艺术字才需要，不然包体会很大
+
+[unity生成中文字体库](https://blog.csdn.net/zhunju0089/article/details/103125168)
+
+[字体缺少特定符号导致unity告警](https://www.bilibili.com/read/cv21557672)
+
+[FontZip工具](https://github.com/forJrking/FontZip)
+#### 杂项
+[根据alpha值判断是否可点击，实现非长方形按钮](https://www.cnblogs.com/notorious/p/12960386.html)
 ### 本地化插件Localization
 [官方文档](https://docs.unity3d.com/Packages/com.unity.localization@1.4/manual/QuickStartGuideWithVariants.html#localize-strings)
 ### AI插件NodeCanvas

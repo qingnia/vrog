@@ -17,6 +17,7 @@ public class AmmoInventoryEntry
 
 public class Controller : MonoBehaviour
 {
+    public VariableJoystick joystick;
     private bool cameraMove = false;
     //Urg that's ugly, maybe find a better way
     public static Controller Instance { get; protected set; }
@@ -161,6 +162,14 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
+        if (!joystick)
+        {
+            var stick = GameSystemInfo.Instance.GetComponentInChildren<VariableJoystick>();
+            if (stick != null)
+            {
+                joystick = stick;
+            }
+        }
         if (CanPause && Input.GetButtonDown("Menu"))
         {
             PauseMenu.Instance.Display();
@@ -214,7 +223,11 @@ public class Controller : MonoBehaviour
             }
 
             // Move around with WASD
-            move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            horizontal = horizontal == 0 && joystick? joystick.Horizontal: horizontal;
+            vertical = vertical == 0 && joystick? joystick.Vertical: vertical;
+            move = new Vector3(horizontal, 0, vertical);
             if (move.sqrMagnitude > 1.0f)
                 move.Normalize();
 
