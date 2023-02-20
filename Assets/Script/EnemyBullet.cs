@@ -22,9 +22,7 @@ public class EnemyBullet : Target
                 targetPos = Vector3.zero;
                 return;
             }
-            Debug.LogFormat("update bullet pos, before: {0}", transform.position.ToString());
             transform.position = Vector3.MoveTowards(transform.position, targetPos, 4 * Time.deltaTime);
-            Debug.LogFormat("update bullet pos, after: {0}", transform.position.ToString());
         }
     }
 

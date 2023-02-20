@@ -82,3 +82,5 @@ dynamic是指每帧重复判断，选择节点一般都要做，只有BOSS二阶
 ### 定义变量的get/set方法后编辑器不可见，挂脚本解决
 [源码地址](https://gitcode.net/mirrors/LMNRY/SetProperty.git)
 
+### 渲染管线
+[B站视频教程](https://www.bilibili.com/video/BV1rS4y1571Y/?spm_id_from=333.788&vd_source=e584a5b537ec1a63ea78ff0f4bd26108)
