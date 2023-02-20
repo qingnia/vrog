@@ -1,0 +1,12 @@
+Font: STXihei  Style: Regular
+Point Size: 36   SP/PD Ratio: 13.9%
+
+Characters included: 6/6
+Missing characters: 0
+Excluded characters: 0
+
+Characters missing from font file:
+----------------------------------------
+
+Characters excluded from packing:
+----------------------------------------

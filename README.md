@@ -26,6 +26,10 @@ struct是值类型，class是引用类型
 [根据alpha值判断是否可点击，实现非长方形按钮](https://www.cnblogs.com/notorious/p/12960386.html)
 
 [pivot与anchor的使用](https://juejin.cn/post/6992876202507632677)
+
+[unity生成中文字体库](https://blog.csdn.net/zhunju0089/article/details/103125168)
+
+[字体缺少特定符号导致unity告警](https://www.bilibili.com/read/cv21557672)
 #### UI ToolKit
 ```sh
 游戏UI用UGUI和UI ToolKit都可以，编辑器的UI开发官方推荐用ToolKit

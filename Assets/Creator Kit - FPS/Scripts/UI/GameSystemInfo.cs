@@ -31,4 +31,11 @@ public class GameSystemInfo : MonoBehaviour
     {
         settingUI.SetActive(true);
     }
+
+    public void ClickScore() { }
+
+    public void NormalAttack()
+    {
+        Debug.LogFormat("normal attack, need a skill");
+    }
 }
