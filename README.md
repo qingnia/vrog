@@ -85,4 +85,12 @@ dynamic是指每帧重复判断，选择节点一般都要做，只有BOSS二阶
 
 [URP](https://www.bilibili.com/video/BV1rS4y1571Y/?spm_id_from=333.788&vd_source=e584a5b537ec1a63ea78ff0f4bd26108)
 
+[Unity Relay完整的网络解决方案](https://docs.unity.com/relay/en/manual/integration)
+
+[lobby例子](https://github.com/Unity-Technologies/com.unity.services.samples.game-lobby)
+
 [NetCode](https://www.bilibili.com/video/BV1V14y1W7ya/?vd_source=e584a5b537ec1a63ea78ff0f4bd26108)
+
+[NetCode例子](https://unity.com/demos/small-scale-coop-sample)
+
+[Vivos unity的文字和语音聊天方案](https://dashboard.unity3d.com/gaming/organizations/1460323/projects/68fa62da-1bbf-4a6f-bf4f-eec28292937a/vivox/about)
