@@ -18,6 +18,23 @@ struct是值类型，class是引用类型
 [时区TimeZoneInfo类](https://learn.microsoft.com/zh-cn/dotnet/api/system.timezoneinfo?view=net-7.0)
 
 [delegate委托](https://blog.csdn.net/qq_42345116/article/details/123408419)
+
+### 异步操作
+[sync修饰符](https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/async)
+
+[await运算符](https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/operators/await)
+```C#
+//async标识的函数还是同步执行的，只有await声明的那一行才会暂停，等待异步返回结果
+    //发起登录请求，await后更新UI
+    public async void OnSignIn()
+    {
+        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        playerId = AuthenticationService.Instance.PlayerId;
+
+        Debug.Log($"Signed in. Player ID: {playerId}");
+        UpdateUI();
+    }
+```
 ## 项目用到的unity功能及教程
 ### UI
 #### UI ToolKit
@@ -91,6 +108,10 @@ dynamic是指每帧重复判断，选择节点一般都要做，只有BOSS二阶
 
 [NetCode](https://www.bilibili.com/video/BV1V14y1W7ya/?vd_source=e584a5b537ec1a63ea78ff0f4bd26108)
 
-[NetCode例子](https://unity.com/demos/small-scale-coop-sample)
-
 [Vivos unity的文字和语音聊天方案](https://dashboard.unity3d.com/gaming/organizations/1460323/projects/68fa62da-1bbf-4a6f-bf4f-eec28292937a/vivox/about)
+
+[UGS例子1 BossRoom 勉强适配2022.2](https://github.com/qingnia/TestBossRoom)
+
+[BossRoom介绍](https://docs-multiplayer.unity3d.com/netcode/current/learn/bossroom/bossroom/index.html)
+
+[UGS例子2 u2021.2](https://github.com/Unity-Technologies/com.unity.services.samples.game-lobby)
