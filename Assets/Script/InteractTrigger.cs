@@ -10,7 +10,6 @@ public struct interactInfo
 public class InteractTrigger : MonoBehaviour
 {
     BaseRoom bm;
-    private bool isTriggerd;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +24,23 @@ public class InteractTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (bm && !isTriggerd)
+        if (bm)
         {
             Debug.Log("on collision");
             bm.EnterRoom(other);
-            isTriggerd = true;
+        }
+        var MonsterManager = GetComponentInParent<MonsterManager>();
+        if (MonsterManager != null)
+        {
+            MonsterManager.EnterRoom();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        var MonsterManager = GetComponentInParent<MonsterManager>();
+        if (MonsterManager != null)
+        {
+            MonsterManager.LeaveRoom();
         }
     }
 }

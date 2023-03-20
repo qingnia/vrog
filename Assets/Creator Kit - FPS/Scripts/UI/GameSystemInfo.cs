@@ -9,6 +9,8 @@ public class GameSystemInfo : MonoBehaviour
     
     public Text TimerText;
     public Text ScoreText;
+
+    public GameObject settingUI;
     
     void Awake()
     {
@@ -23,5 +25,17 @@ public class GameSystemInfo : MonoBehaviour
     public void UpdateScore(int score)
     {
         ScoreText.text = score.ToString();
+    }
+
+    public void ClickSetting()
+    {
+        settingUI.SetActive(true);
+    }
+
+    public void ClickScore() { }
+
+    public void NormalAttack()
+    {
+        Debug.LogFormat("normal attack, need a skill");
     }
 }

@@ -44,7 +44,7 @@ public class Weapon : MonoBehaviour
     public float fireRate = 0.5f;
     public float reloadTime = 2.0f;
     public int clipSize = 4;
-    public float damage = 1.0f;
+    public int damage = 1;
 
     [AmmoType]
     public int ammoType = -1;
@@ -258,8 +258,8 @@ public class Weapon : MonoBehaviour
             //this is a target
             if (hit.collider.gameObject.layer == 10)
             {
-                Target target = hit.collider.gameObject.GetComponent<Target>();
-                target.Got(damage);
+                Fighter fighter = hit.collider.gameObject.GetComponent<Fighter>();
+                fighter.Damaged(-damage);
             }
         }
 

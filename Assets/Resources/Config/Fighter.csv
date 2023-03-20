@@ -1,0 +1,3 @@
+序号	类型	最大血量	攻击力	防御力	速度	攻击间隔	射程	预制体
+id	type	maxHealth	attack	defend	speed	attackInterval	attackRange	prefabName
+1	1	10	1	0	4	10	3	BloodCellTarget

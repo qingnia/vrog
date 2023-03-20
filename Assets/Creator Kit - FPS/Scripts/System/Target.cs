@@ -1,7 +1,11 @@
-﻿using System.Collections;
+﻿using NodeCanvas.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Unity.Services.Analytics.Internal;
 using UnityEngine;
+using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 using Vector3 = UnityEngine.Vector3;
 
 public class Target : MonoBehaviour
@@ -33,6 +37,9 @@ public class Target : MonoBehaviour
         m_CurrentHealth = health;
         if(IdleSource != null)
             IdleSource.time = Random.Range(0.0f, IdleSource.clip.length);
+    }
+    private void Update()
+    {
     }
 
     public void Got(float damage)

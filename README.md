@@ -8,8 +8,64 @@ https://blog.csdn.net/NSJim/article/details/123253659
 # VS安装插件，强制保存为UTF-8
 扩展 --> 管理扩展 --> 联机 --> 搜索force UTF-8（No BOM) --> 下载 --> 重启VS
 ```
+## C#语法和接口
+### 值类型和引用类型的区别
+[参考博文](https://www.cnblogs.com/soulsjie/p/13625911.html)
+```sh
+struct是值类型，class是引用类型
+如果赋值struct，修改变量后原值还是不变，但是改成class就可以修改原值
+```
+[时区TimeZoneInfo类](https://learn.microsoft.com/zh-cn/dotnet/api/system.timezoneinfo?view=net-7.0)
+
+[delegate委托](https://blog.csdn.net/qq_42345116/article/details/123408419)
+
+### 异步操作
+[sync修饰符](https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/async)
+
+[await运算符](https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/operators/await)
+```C#
+//async标识的函数还是同步执行的，只有await声明的那一行才会暂停，等待异步返回结果
+    //发起登录请求，await后更新UI
+    public async void OnSignIn()
+    {
+        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        playerId = AuthenticationService.Instance.PlayerId;
+
+        Debug.Log($"Signed in. Player ID: {playerId}");
+        UpdateUI();
+    }
+```
+## 项目用到的unity功能及教程
+### UI
+#### UI ToolKit
+```sh
+游戏UI用UGUI和UI ToolKit都可以，编辑器的UI开发官方推荐用ToolKit
+UI ToolKit参考了HTML+CSS+JS的工作流，动画和数据支持的更好
+UI ToolKit更接近一个窗口一个对象，需要一套管理，可惜不支持3D场景也不支持shader
+UGUI是传统树状gameObject，估计要被淘汰掉
+```
+> 本项目重点不在UI，再加上长远目标是VR/AR，所以选择UGUI
+
+[官方文档](https://docs.unity3d.com/2022.2/Documentation/Manual/UI-system-compare.html)
+
+#### 布局
+[pivot与anchor的使用](https://juejin.cn/post/6992876202507632677)
+#### 字体
+> 常规语言不要用TextMeshPro，美术的艺术字才需要，不然包体会很大
+
+[unity生成中文字体库](https://blog.csdn.net/zhunju0089/article/details/103125168)
+
+[字体缺少特定符号导致unity告警](https://www.bilibili.com/read/cv21557672)
+
+[FontZip工具](https://github.com/forJrking/FontZip)
+#### 杂项
+[根据alpha值判断是否可点击，实现非长方形按钮](https://www.cnblogs.com/notorious/p/12960386.html)
+### 本地化插件Localization
+[官方文档](https://docs.unity3d.com/Packages/com.unity.localization@1.4/manual/QuickStartGuideWithVariants.html#localize-strings)
 ### AI插件NodeCanvas
 [官网](https://nodecanvas.paradoxnotion.com/)
+
+[节点概述](https://www.jianshu.com/p/a12470577fd0)
 
 [nav mesh 官网文档](https://docs.unity3d.com/2022.2/Documentation/Manual/Navigation.html)
 
@@ -17,42 +73,45 @@ https://blog.csdn.net/NSJim/article/details/123253659
 
 [动态导航](https://www.bilibili.com/read/cv13695393)
 ```sh
+dynamic是指每帧重复判断，选择节点一般都要做，只有BOSS二阶段这种特殊情况才不需要勾选
 ```
+### 摇杆
+[joystick 接入](https://blog.csdn.net/Vaccae/article/details/111596223)
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+### timeline
+[基本介绍](https://blog.csdn.net/linxinfa/article/details/108374878)
 
-#### 软件架构
-软件架构说明
+[摄像机动画](https://blog.csdn.net/qq_39435884/article/details/116232225)
 
+[自定义新track](https://blog.csdn.net/qq_37390527/article/details/111714097)
 
-#### 安装教程
+[概念(图多但费劲)](https://blog.csdn.net/js0907/article/details/108250190)
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 快速创建自定义脚本/文件
+```sh
+修改Editor/CustomUnityEditor，支持新选项
+在Edutor/ScriptTemplates下创建文件模板，对应的代码读新模板
+```
+### 定义变量的get/set方法后编辑器不可见，挂脚本解决
+[源码地址](https://gitcode.net/mirrors/LMNRY/SetProperty.git)
 
-#### 使用说明
+### unity官方扩展插件(待了解)
+[UI ToolKit](https://docs.unity3d.com/2022.2/Documentation/Manual/UIElements.html)
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+[内存分析](https://docs.unity3d.com/Packages/com.unity.memoryprofiler@1.0/manual/index.html)
 
-#### 参与贡献
+[URP](https://www.bilibili.com/video/BV1rS4y1571Y/?spm_id_from=333.788&vd_source=e584a5b537ec1a63ea78ff0f4bd26108)
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+[Unity Relay完整的网络解决方案](https://docs.unity.com/relay/en/manual/integration)
 
+[lobby例子](https://github.com/Unity-Technologies/com.unity.services.samples.game-lobby)
 
-#### 特技
+[NetCode](https://www.bilibili.com/video/BV1V14y1W7ya/?vd_source=e584a5b537ec1a63ea78ff0f4bd26108)
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+[Vivos unity的文字和语音聊天方案](https://dashboard.unity3d.com/gaming/organizations/1460323/projects/68fa62da-1bbf-4a6f-bf4f-eec28292937a/vivox/about)
+
+[UGS例子1 BossRoom 勉强适配2022.2](https://github.com/qingnia/TestBossRoom)
+
+[BossRoom介绍](https://docs-multiplayer.unity3d.com/netcode/current/learn/bossroom/bossroom/index.html)
+
+[UGS例子2 u2021.2](https://github.com/Unity-Technologies/com.unity.services.samples.game-lobby)

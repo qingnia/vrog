@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using NodeCanvas.Tasks.Actions;
+using UnityEngine.EventSystems;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -15,6 +17,8 @@ public class AmmoInventoryEntry
 
 public class Controller : MonoBehaviour
 {
+    public VariableJoystick joystick;
+    private bool cameraMove = false;
     //Urg that's ugly, maybe find a better way
     public static Controller Instance { get; protected set; }
 
@@ -68,8 +72,8 @@ public class Controller : MonoBehaviour
     
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         m_IsPaused = false;
         m_Grounded = true;
@@ -101,8 +105,71 @@ public class Controller : MonoBehaviour
         m_HorizontalAngle = transform.localEulerAngles.y;
     }
 
+    private void InputUpdate()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //移动端
+            if (Application.platform == RuntimePlatform.Android ||
+                    Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                int fingerId = Input.GetTouch(0).fingerId;
+                if (!EventSystem.current.IsPointerOverGameObject(fingerId))
+                {
+                    cameraMove = true;
+                    Debug.Log("点击到场景");
+                }
+            }
+            //其它平台
+            else
+            {
+                if (!EventSystem.current.IsPointerOverGameObject())
+                {
+                    cameraMove = true;
+                    Debug.Log("点击到场景");
+                }
+            }
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            cameraMove = false;
+            return;
+        }
+        if (cameraMove)
+        {
+            //允许摄像机控制
+            // Turn player
+            float turnPlayer = Input.GetAxis("Mouse X") * MouseSensitivity;
+            m_HorizontalAngle = m_HorizontalAngle + turnPlayer;
+
+            if (m_HorizontalAngle > 360) m_HorizontalAngle -= 360.0f;
+            if (m_HorizontalAngle < 0) m_HorizontalAngle += 360.0f;
+
+            Vector3 currentAngles = transform.localEulerAngles;
+            currentAngles.y = m_HorizontalAngle;
+            transform.localEulerAngles = currentAngles;
+
+            // Camera look up/down
+            var turnCam = -Input.GetAxis("Mouse Y");
+            turnCam = turnCam * MouseSensitivity;
+            m_VerticalAngle = Mathf.Clamp(turnCam + m_VerticalAngle, -89.0f, 89.0f);
+            currentAngles = CameraPosition.transform.localEulerAngles;
+            currentAngles.x = m_VerticalAngle;
+            CameraPosition.transform.localEulerAngles = currentAngles;
+        }
+    }
+
+
     void Update()
     {
+        if (!joystick)
+        {
+            var stick = GameSystemInfo.Instance.GetComponentInChildren<VariableJoystick>();
+            if (stick != null)
+            {
+                joystick = stick;
+            }
+        }
         if (CanPause && Input.GetButtonDown("Menu"))
         {
             PauseMenu.Instance.Display();
@@ -156,7 +223,11 @@ public class Controller : MonoBehaviour
             }
 
             // Move around with WASD
-            move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            horizontal = horizontal == 0 && joystick? joystick.Horizontal: horizontal;
+            vertical = vertical == 0 && joystick? joystick.Vertical: vertical;
+            move = new Vector3(horizontal, 0, vertical);
             if (move.sqrMagnitude > 1.0f)
                 move.Normalize();
 
@@ -166,26 +237,8 @@ public class Controller : MonoBehaviour
             
             move = transform.TransformDirection(move);
             m_CharacterController.Move(move);
-            
-            // Turn player
-            float turnPlayer =  Input.GetAxis("Mouse X") * MouseSensitivity;
-            m_HorizontalAngle = m_HorizontalAngle + turnPlayer;
 
-            if (m_HorizontalAngle > 360) m_HorizontalAngle -= 360.0f;
-            if (m_HorizontalAngle < 0) m_HorizontalAngle += 360.0f;
-            
-            Vector3 currentAngles = transform.localEulerAngles;
-            currentAngles.y = m_HorizontalAngle;
-            transform.localEulerAngles = currentAngles;
-
-            // Camera look up/down
-            var turnCam = -Input.GetAxis("Mouse Y");
-            turnCam = turnCam * MouseSensitivity;
-            m_VerticalAngle = Mathf.Clamp(turnCam + m_VerticalAngle, -89.0f, 89.0f);
-            currentAngles = CameraPosition.transform.localEulerAngles;
-            currentAngles.x = m_VerticalAngle;
-            CameraPosition.transform.localEulerAngles = currentAngles;
-  
+            InputUpdate();
             m_Weapons[m_CurrentWeapon].triggerDown = Input.GetMouseButton(0);
 
             Speed = move.magnitude / (PlayerSpeed * Time.deltaTime);
@@ -239,6 +292,7 @@ public class Controller : MonoBehaviour
 
     public void DisplayCursor(bool display)
     {
+        display = true;
         m_IsPaused = display;
         Cursor.lockState = display ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = display;

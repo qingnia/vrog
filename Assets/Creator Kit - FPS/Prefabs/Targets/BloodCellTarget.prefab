@@ -144,6 +144,8 @@ GameObject:
   - component: {fileID: 1191098846476774518}
   - component: {fileID: 6727116072838844120}
   - component: {fileID: 6022074247928418074}
+  - component: {fileID: 6881859091845831770}
+  - component: {fileID: 6949285288515820636}
   m_Layer: 10
   m_Name: BloodCellTarget
   m_TagString: Untagged
@@ -249,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":422.0,"y":85.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"_action":{"speed":{"_value":4.0},"keepDistance":{"_value":0.1},"minWanderDistance":{"_value":5.0},"maxWanderDistance":{"_value":20.0},"$type":"NodeCanvas.Tasks.Actions.Wander"},"_position":{"x":381.0,"y":271.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"1"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"Player":{"_value":1,"_name":"Player","_id":"db885c37-4978-4cf5-9aa9-eea3df2b579b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":468.0,"y":33.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"0"},{"_action":{"searchTag":"Player","saveAs":{"_name":"Player","_targetVariableID":"d4d48dbb-353c-4b3d-9c3a-b8cb0ea450ce"},"$type":"NodeCanvas.Tasks.Actions.FindWithTag"},"_position":{"x":215.0,"y":125.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"1"},{"dynamic":true,"_position":{"x":475.0,"y":124.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_action":{"SkillID":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.CastSkill"},"_position":{"x":177.0,"y":274.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_condition":{"checkTarget":{"_name":"Player","_targetVariableID":"d4d48dbb-353c-4b3d-9c3a-b8cb0ea450ce"},"distance":{"_value":3.0},"$type":"NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"},"_position":{"x":297.0,"y":290.0},"$type":"NodeCanvas.BehaviourTrees.ConditionalEvaluator","$id":"4"},{"_action":{"target":{"_name":"Player","_targetVariableID":"d4d48dbb-353c-4b3d-9c3a-b8cb0ea450ce"},"$type":"NodeCanvas.Tasks.Actions.Attack"},"_position":{"x":334.0,"y":394.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"5"},{"_condition":{"checkTarget":{"_value":1},"distance":{"_value":10.0},"$type":"NodeCanvas.Tasks.Conditions.CheckDistanceToGameObject"},"_position":{"x":503.0,"y":281.0},"$type":"NodeCanvas.BehaviourTrees.ConditionalEvaluator","$id":"6"},{"_action":{"target":{"_name":"Player","_targetVariableID":"d4d48dbb-353c-4b3d-9c3a-b8cb0ea450ce"},"speed":{"_value":4.0},"keepDistance":{"_value":0.1},"$type":"NodeCanvas.Tasks.Actions.MoveToGameObject"},"_position":{"x":522.0,"y":386.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"7"},{"childWeights":[{"_value":1.0}],"failChance":{},"_position":{"x":670.0,"y":230.0},"$type":"NodeCanvas.BehaviourTrees.ProbabilitySelector","$id":"8"},{"_action":{"speed":{"_value":4.0},"keepDistance":{"_value":0.1},"minWanderDistance":{"_value":3.0},"maxWanderDistance":{"_value":10.0},"$type":"NodeCanvas.Tasks.Actions.Wander"},"_position":{"x":723.0,"y":375.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"9"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"7"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"8"},"_targetNode":{"$ref":"9"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"Player":{"_name":"Player","_id":"d4d48dbb-353c-4b3d-9c3a-b8cb0ea450ce","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
@@ -258,7 +260,7 @@ MonoBehaviour:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 0, y: 0}
+    _translation: {x: -51, y: 13}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -306,6 +308,36 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!320 &6881859091845831770
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742523207603312984}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
+--- !u!114 &6949285288515820636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742523207603312984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05fcb3f78462bec469eff9cef7c5086c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pd: {fileID: 0}
 --- !u!1 &6681335294391022138
 GameObject:
   m_ObjectHideFlags: 0
